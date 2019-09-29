@@ -1,0 +1,35 @@
+{
+  "name": "myblog",
+  "version": "1.0.0",
+  "description": "A blog web application with Node.js back-end",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdinaBMakers/MyBlog.git"
+  },
+  "keywords": [
+    "Node.js",
+    "Express",
+    "JavaScript",
+    "Jest"
+  ],
+  "author": "Edina Bolkeny",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EdinaBMakers/MyBlog/issues"
+  },
+  "homepage": "https://github.com/EdinaBMakers/MyBlog#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
