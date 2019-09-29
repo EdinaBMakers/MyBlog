@@ -4,7 +4,7 @@
   "description": "A blog web application with Node.js back-end",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node server.js"
   },
   "repository": {
@@ -27,7 +27,9 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "jest": "^24.9.0",
-    "nodemon": "^1.19.3"
+    "nodemon": "^1.19.3",
+    "superagent": "^5.1.0",
+    "supertest": "^4.0.2"
   },
   "dependencies": {
     "express": "^4.17.1"
