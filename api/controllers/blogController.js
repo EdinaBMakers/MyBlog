@@ -11,3 +11,10 @@ exports.getPosts = (req, res) => {
     }
   });
 };
+
+exports.createPost = (req, res) => {
+  const timestamp = Date.now();
+  const post = req.body.blogpost;
+
+  res.json({[timestamp]: post});
+}

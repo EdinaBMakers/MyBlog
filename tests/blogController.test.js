@@ -6,11 +6,17 @@ const app = require('../app');
 jest.mock('fs');
 
 const fs = require('fs');
+let dateSpy;
+
+const setTime = time => {
+  dateSpy = jest.spyOn(Date, 'now').mockImplementation(() => time);
+}
 
 describe('blogController', () => {
 
   beforeEach(() => {
     fs.__resetMock();
+    setTime(0);
   });
 
   describe('getPosts', () => {
@@ -66,6 +72,30 @@ describe('blogController', () => {
       request(app).get('/get-posts').then((response) => {
         expect(response.status).toStrictEqual(500);
         done();
+      });
+    });
+  });
+
+  describe('postPosts', () => {
+    test('It can handle post create posts route', (done) => {
+      request(app).post('/create-post').then((response) => {
+        expect(response.status).toBe(200);
+        done();
+      });
+    });
+
+    test('It responds with post when first post added', (done) => {        
+      const expectedTime = 111;
+      const expectedPost = 'test post';
+      
+      setTime(expectedTime);
+
+      request(app)
+        .post('/create-post')
+        .send(`blogpost=${expectedPost}`)
+        .then((response) => {
+          expect(response.body).toStrictEqual({[expectedTime]: expectedPost});
+          done();
       });
     });
   });
