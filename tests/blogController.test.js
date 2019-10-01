@@ -98,5 +98,60 @@ describe('blogController', () => {
           done();
       });
     });
+
+    test('It responds only with the last post when new post added', (done) => {        
+      const firstPostTime = 111;
+      const firstPost = 'test post 1';
+      
+      setTime(firstPostTime);
+
+      request(app)
+        .post('/create-post')
+        .send(`blogpost=${firstPost}`)
+        .then((response) => {
+          expect(response.body).toStrictEqual({[firstPostTime]: firstPost});
+
+          const secondPostTime = 112;
+          const secondPost = 'test post 2';
+          
+          setTime(secondPostTime);
+
+          request(app)
+          .post('/create-post')
+          .send(`blogpost=${secondPost}`)
+          .then((response) => {
+            expect(response.body).toStrictEqual({[secondPostTime]: secondPost});
+            done();
+        });
+      });
+    });
+
+    test('It appends new post to the file', (done) => {
+      const existingPostTime = 111;
+      const existingPost = "test post";
+      let fileContent = {[existingPostTime]: existingPost};
+
+      fs.__givenFileContent(fileContent);
+
+      const newPostTime = 112;
+      const newPost = 'new test post';
+      
+      setTime(newPostTime);
+
+      request(app)
+        .post('/create-post')
+        .send(`blogpost=${newPost}`)
+        .then((createPostResponse) => {
+          expect(createPostResponse.body).toStrictEqual({[newPostTime]: newPost});
+
+          request(app).get('/get-posts').then((getPostsResponse) => {
+            expect(getPostsResponse.body).toStrictEqual({
+              [existingPostTime]: existingPost,
+              [newPostTime]: newPost
+            });
+            done();
+          });
+      });
+    });
   });
 });

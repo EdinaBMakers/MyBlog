@@ -1,12 +1,12 @@
 'use strict';
 
 const mockfs = jest.genMockFromModule('fs');
-let fileContent = {};
+let fileContent = JSON.stringify({});
 let errorMessage = null;
 
 function __givenFileContent(expectedFileContent) {
   this.errorMessage = null;
-  this.fileContent = expectedFileContent;
+  this.fileContent = JSON.stringify(expectedFileContent);
 }
 
 function __givenFileError(errorMessage) {
@@ -15,7 +15,7 @@ function __givenFileError(errorMessage) {
 }
 
 function __resetMock() {
-  this.fileContent = {};
+  this.fileContent = JSON.stringify({});
   this.errorMessage = null;
 }
 
@@ -28,7 +28,7 @@ function readFile(path, callback, data) {
 }
 
 function writeFile(path, data, callback) {
-  this.fileContent = data;
+  this.fileContent = JSON.stringify(data);
 }
 
 mockfs.__givenFileContent = __givenFileContent;
