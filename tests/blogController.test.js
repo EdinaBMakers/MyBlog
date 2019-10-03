@@ -64,7 +64,7 @@ describe('blogController', () => {
       });
     });
 
-    test('It responds with error if can not read posts', (done) => { 
+    test('It responds with error if cannot read posts', (done) => { 
       let errorMessage = 'File not found';
 
       fs.__givenFileError(errorMessage);
@@ -151,6 +151,17 @@ describe('blogController', () => {
             });
             done();
           });
+      });
+    });
+
+    test('It responds with error if cannot create post', (done) => { 
+      let errorMessage = 'File not found';
+
+      fs.__givenFileError(errorMessage);
+      
+      request(app).post('/create-post').then((response) => {
+        expect(response.status).toStrictEqual(500);
+        done();
       });
     });
   });
