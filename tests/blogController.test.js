@@ -76,7 +76,7 @@ describe('blogController', () => {
     });
   });
 
-  describe('postPosts', () => {
+  describe('createPosts', () => {
     test('It can handle post create posts route', (done) => {
       request(app).post('/create-post').then((response) => {
         expect(response.status).toBe(200);

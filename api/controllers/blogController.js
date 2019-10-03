@@ -14,7 +14,7 @@ exports.getPosts = (req, res) => {
 
 exports.createPost = (req, res) => {
   const timestamp = Date.now();
-  const post = req.body.blogpost;
+  const post = req.fields.blogpost;
 
   fs.readFile('data/posts.json', function (error, file) {
     if (error == null) {
