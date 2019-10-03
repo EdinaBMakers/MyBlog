@@ -4,24 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Blog</title>
+  <link href="./main.css" rel="stylesheet">
 </head>
 <body>
   <header>
-    <img src="./img/CodeBunnyLogo.png" alt="Code Bunny Logo">
+    <img class="main-logo" src="./img/BunnyLogo.png" alt="Code Bunny Logo">
+    <h1 class="title">Code Bunny Blog</h1>
   </header>
   <main>
     <div class="entry-container">
       <h3>Create a blog post</h3>
       <form action="/create-post" method="post">
-      <textarea name="blogpost" cols="30" rows="10"></textarea>
-      <button type="submit">Send</button>
+        <textarea name="blogpost" cols="30" rows="10"></textarea>
+        <button type="submit">Send</button>
       </form>
     </div>
 
-
-    <br>
-    <hr>
-    <br>
+    <br/>
+    <hr/>
+    <br/>
 
     <h2>Recent Posts</h2>
     <div class="post-container"></div>

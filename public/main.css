@@ -1,0 +1,80 @@
+header {
+  background: #ff008e;
+  height: 100px;
+}
+
+.main-logo {
+	float: left;
+	width: 100px;
+	height: 100px;
+}
+
+.title {
+  font-size: 50px;
+  color: white;
+  padding: 25px 0px;
+  margin:  0px 0px 0px 130px;
+}
+
+main {
+	display: block;
+	width: 80%;
+	margin: 0 auto;
+}
+
+textarea {
+  width: 96%;
+  border-radius: 3px;
+  border: 1px solid #848484;
+  padding: 5px 2%;
+}
+
+button[type="submit"] {
+	background: #ff008e;
+	border: none;
+    color: white;
+    padding: 4px 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    float: right;
+    margin-top: 10px;
+    border-radius: 3px;
+}
+
+hr {
+  margin-top: 50px;
+}
+
+.thumbnail {
+	float: left;
+	width: 50px;
+	height: auto;
+	margin-left: 3px;
+	margin-top: 3px;
+}
+
+.post {
+	width: 100%;
+    border: 1px solid #848484;
+    float: left;
+    margin: 2%;
+    border-radius: 3px;
+    -webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 3px 3px 3px 0px rgba(50, 50, 50, 0.4);
+    background: white;
+}
+
+.post p {
+	margin: 5px 10px;
+}
+
+@media (min-width: 600px) {
+  .post {
+   width: 28.9%;
+ }
+}
+
+body {
+  margin: 0px;
+}
