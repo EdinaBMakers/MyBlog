@@ -1,0 +1,72 @@
+if (document.readyState !== 'loading') {
+  ready();
+} else {
+  document.addEventListener('DOMContentLoaded', ready);
+}
+
+function ready () {
+  getBlogposts('/get-posts');
+
+  let form = document.querySelector('form');
+    form.addEventListener('submit', function (event) {
+
+        event.preventDefault(); // prevents the form from contacting our server automatically (we want to do it ourselves)
+        let formActionUrl = form.action; // 'form.action' is the url '/create-post'
+        let formData = new FormData(form);
+
+        postBlogposts(formActionUrl, formData);
+  });
+}
+
+function postBlogposts (url, data) {
+  fetch(url, {
+      method: 'POST',
+      body: data
+  })
+  .then(function (res) {
+      res.json()
+          .then(function (json) {
+              console.log(json);
+              addBlogpostsToPage(json);
+              document.querySelector('form').reset();
+      })
+  })
+  .catch(function (err) {
+      console.error(err)
+  });
+}
+
+function getBlogposts(url) {
+  fetch(url, {
+    method: 'GET'
+  })
+  .then(function (res) {
+    res.json()
+    .then(function (json) {
+      addBlogpostsToPage(json);
+    });
+  })
+  .catch(function (err) {
+    console.log(err);
+  });
+}
+
+function addBlogpostsToPage(data) {
+  for (let blogpost in data) {
+    if (data.hasOwnProperty(blogpost)) {
+      let postDiv = document.createElement('div');
+      let postText = document.createElement('p');
+      let thumbnail = document.createElement('img');
+      let postContainer = document.querySelector('.post-container')
+
+      thumbnail.src = "./img/BunnyEarsIcon.png";
+      thumbnail.className = "thumbnail";
+      postText.innerHTML = data[blogpost];
+      postDiv.className = "post";
+
+      postDiv.appendChild(thumbnail);
+      postDiv.appendChild(postText);
+      postContainer.appendChild(postDiv);
+    }
+  }
+}

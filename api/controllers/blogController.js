@@ -22,7 +22,7 @@ exports.createPost = (req, res) => {
 
       blog[timestamp] = post;
 
-      fs.writeFile('data/posts.json', blog, function (error) {
+      fs.writeFile('data/posts.json', JSON.stringify(blog), function (error) {
         console.log('done');
       });
 
