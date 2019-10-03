@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Blog</title>
+</head>
+<body>
+  <header>
+    <img src="./img/CodeBunnyLogo.png" alt="Code Bunny Logo">
+  </header>
+  <main>
+    <div class="entry-container">
+      <h3>Create a blog post</h3>
+      <form action="/create-post" method="post">
+      <textarea name="blogpost" cols="30" rows="10"></textarea>
+      <button type="submit">Send</button>
+      </form>
+    </div>
+
+
+    <br>
+    <hr>
+    <br>
+
+    <h2>Recent Posts</h2>
+    <div class="post-container"></div>
+  </main>
+</body>
+</html>
